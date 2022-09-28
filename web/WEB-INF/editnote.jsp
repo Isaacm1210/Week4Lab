@@ -16,6 +16,15 @@
         
         <h2>Edit Note</h2>
         
-        <a href="note">Save</a>
+        <form action="note" method="post">
+            <b>Title: </b> <input type="text" name="title" value="">
+            <br>
+            <b>Contents: </b> <input type="text" name="contents" value="">
+            <br>
+            
+        <input type="Submit" name="Save" value="Save">
+        </form>
+        
+        
     </body>
 </html>

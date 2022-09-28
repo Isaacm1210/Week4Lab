@@ -16,8 +16,8 @@
         
         <h2>View Note</h2>
         
-        <h4>Title: </h4>
-        <h4>Contents: </h4>
+        <div>Title: </div>
+        <div>Contents: </div>
         
         <a href="note?edit">Edit</a>
     </body>
