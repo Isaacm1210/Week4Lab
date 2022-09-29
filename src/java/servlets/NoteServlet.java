@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import java.io.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,6 +38,11 @@ public class NoteServlet extends HttpServlet {
     }
 
     
+    /* 
+    * Method is called when "Save" button is pressed
+    * Saves form from editnote to note.txt
+    * Displays saved content to viewnote
+    */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
