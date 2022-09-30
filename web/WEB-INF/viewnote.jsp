@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewnote
     Created on : 28-Sep-2022, 11:25:15 AM
-    Author     : mhame
+    Author     : mhamed
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,12 +13,10 @@
     </head>
     <body>
         <h1>Simple Note Keeper</h1>
-        
         <h2>View Note</h2>
         
         <div>Title: ${note.title}</div>
         <div>Contents: ${note.content}</div>
-        
         <a href="note?edit" name="edit">Edit</a>
     </body>
 </html>
