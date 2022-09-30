@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import models.Note;
@@ -13,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,25 +33,22 @@ public class NoteServlet extends HttpServlet {
         
         try{
         BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+        
         String title = br.readLine();
         String content = br.readLine();
         Note note = new Note(title, content);
         request.setAttribute("note", note);
         br.close();
-        }catch(IOException e){
-            
+        }catch(FileNotFoundException e){
+       
         }
             
-        
-        
         if(edit == null){
             getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
         }
         else{
             getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
         }
-        
-        
     }
 
     
@@ -68,10 +61,23 @@ public class NoteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String savedTitle = request.getParameter("title");
+        String savedContent = request.getParameter("content");
+        
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+        
+        Note savedNote = new Note(savedTitle, savedContent);
+        
+        try{
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false))); 
-        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
-
+        pw.println(savedNote.getTitle());
+        pw.println(savedNote.getContent());
+        pw.close();
+        }catch(FileNotFoundException e){
+            
+        }
+        request.setAttribute("note", savedNote);
+        
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
     }
 

@@ -19,6 +19,6 @@
         <div>Title: ${note.title}</div>
         <div>Contents: ${note.content}</div>
         
-        <a href="note?edit">Edit</a>
+        <a href="note?edit" name="edit">Edit</a>
     </body>
 </html>
